@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/background_blue">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="110dp">
+
+                <TextView
+                    android:shadowColor="@color/colorPrimaryDark"
+                    android:shadowRadius="10"
+                    android:shadowDx="2"
+                    android:shadowDy="5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ProyectoDM"
+                    android:textColor="@color/colorWhite"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="30dp"
+                    android:textSize="35sp" />
+                <TextView
+                    android:shadowColor="@color/colorPrimaryDark"
+                    android:shadowRadius="10"
+                    android:shadowDx="2"
+                    android:shadowDy="5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Selecciona una opción"
+                    android:layout_marginLeft="30dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:elevation="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/background_white"
+                android:paddingRight="50dp"
+                android:paddingLeft="40dp"
+                android:paddingBottom="40dp"
+                android:paddingTop="40dp">
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¿Quiero?"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="25dp"/>
+
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:background="@drawable/background_top_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_marginBottom="0dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="180dp"
+                            android:src="@drawable/lector" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:padding="20dp"
+                        android:orientation="vertical"
+                        android:layout_marginTop="-18dp"
+                        android:background="@drawable/background_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:textColor="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Escanear un código"
+                            />
+
+                        <Button
+                            android:id="@+id/btn_codigoBarras"
+                            android:layout_marginBottom="10dp"
+                            android:elevation="6dp"
+                            android:textSize="12sp"
+                            android:layout_marginTop="10dp"
+                            android:layout_gravity="center"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="@color/colorWhite"
+                            android:background="@drawable/boton_primary_xs"
+                            android:text="Ir al lector"
+                            android:layout_width="180dp"
+                            android:layout_height="30dp"/>
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:background="@drawable/background_top_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_marginBottom="0dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="180dp"
+                            android:src="@drawable/local" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:padding="20dp"
+                        android:orientation="vertical"
+                        android:layout_marginTop="-18dp"
+                        android:background="@drawable/background_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:textColor="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Consultar data local"
+                            />
+
+                        <Button
+                            android:id="@+id/btn_listadoLocal"
+                            android:layout_marginBottom="10dp"
+                            android:elevation="6dp"
+                            android:textSize="12sp"
+                            android:layout_marginTop="10dp"
+                            android:layout_gravity="center"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="@color/colorWhite"
+                            android:background="@drawable/boton_primary_xs"
+                            android:text="Ir al listado local"
+                            android:layout_width="180dp"
+                            android:layout_height="30dp"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:background="@drawable/background_top_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_marginBottom="0dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="180dp"
+                            android:src="@drawable/nube" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:padding="20dp"
+                        android:orientation="vertical"
+                        android:layout_marginTop="-18dp"
+                        android:background="@drawable/background_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:textColor="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Consultar data en nube"
+                            />
+
+                        <Button
+                            android:id="@+id/btn_listadoNube"
+                            android:layout_marginBottom="10dp"
+                            android:elevation="6dp"
+                            android:textSize="12sp"
+                            android:layout_marginTop="10dp"
+                            android:layout_gravity="center"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textColor="@color/colorWhite"
+                            android:background="@drawable/boton_primary_xs"
+                            android:text="Ir al listado nube"
+                            android:layout_width="180dp"
+                            android:layout_height="30dp"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListadoNube">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/background_blue">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+
+            <TextView
+                android:shadowColor="@color/colorPrimaryDark"
+                android:shadowRadius="10"
+                android:shadowDx="2"
+                android:shadowDy="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ProyectoDM"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="100dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="40sp" />
+            <TextView
+                android:shadowColor="@color/colorPrimaryDark"
+                android:shadowRadius="10"
+                android:shadowDx="2"
+                android:shadowDy="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Listado Nube"
+                android:layout_marginLeft="30dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:elevation="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/background_white"
+            android:paddingRight="25dp"
+            android:paddingLeft="25dp"
+            android:paddingTop="60dp">
+
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Listado de Items"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginBottom="10dp"
+                android:textSize="25dp"/>
+
+            <ListView
+                android:id="@+id/lv_datos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="18dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:id="@+id/tv_menureturn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:text="Retornar al menú"/>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
