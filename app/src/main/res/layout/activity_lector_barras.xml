@@ -9,89 +9,85 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/background_blue">
+        android:background="@drawable/background_blue"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="250dp">
+            android:layout_height="250dp"
+            android:orientation="vertical">
 
             <TextView
-                android:shadowColor="@color/colorPrimaryDark"
-                android:shadowRadius="10"
-                android:shadowDx="2"
-                android:shadowDy="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="100dp"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:shadowDx="2"
+                android:shadowDy="5"
+                android:shadowRadius="10"
                 android:text="ProyectoDM"
                 android:textColor="@color/colorWhite"
-                android:layout_marginTop="100dp"
-                android:layout_marginLeft="30dp"
                 android:textSize="40sp" />
+
             <TextView
-                android:shadowColor="@color/colorPrimaryDark"
-                android:shadowRadius="10"
-                android:shadowDx="2"
-                android:shadowDy="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lector QR / Barras"
                 android:layout_marginLeft="30dp"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:shadowDx="2"
+                android:shadowDy="5"
+                android:shadowRadius="10"
+                android:text="Lector QR / Barras"
                 android:textColor="@color/colorWhite"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
 
         </LinearLayout>
 
         <LinearLayout
-            android:elevation="6dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:background="@drawable/background_white"
-            android:paddingRight="25dp"
+            android:elevation="6dp"
+            android:orientation="vertical"
             android:paddingLeft="25dp"
-            android:paddingTop="60dp">
+            android:paddingTop="60dp"
+            android:paddingRight="25dp">
 
             <TextView
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
                 android:text="Lector de código"
                 android:textColor="@color/colorPrimary"
-                android:layout_marginBottom="10dp"
-                android:textSize="25dp"/>
+                android:textSize="25dp" />
 
 
             <ImageView
+                android:layout_width="230dp"
+                android:layout_height="230dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="40dp"
-                android:layout_gravity="center"
-                android:src="@drawable/codigoqr"
-                android:layout_width="230dp"
-                android:layout_height="230dp" />
+                android:src="@drawable/codigoqr" />
 
 
             <Button
-                android:layout_marginTop="20dp"
+                android:id="@+id/btn_leerCodigo"
                 android:layout_width="match_parent"
                 android:layout_height="57dp"
-                android:text="Iniciar lectura"
-                android:textColor="#fff"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/boton_primary"
-                android:id="@+id/btn_leerCodigo"/>
+                android:text="Iniciar lectura"
+                android:textColor="#fff" />
 
 
         </LinearLayout>
 
 
-
-
-
-
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

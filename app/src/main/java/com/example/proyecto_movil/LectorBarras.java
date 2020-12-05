@@ -22,56 +22,62 @@ public class LectorBarras extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_lector_barras );
 
+        // Inicializar el botón
+        btn_leerCodigo = findViewById( R.id.btn_leerCodigo );
 
-        btn_leerCodigo = findViewById(R.id.btn_leerCodigo);
-
+        // Evento click del botón
         btn_leerCodigo.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                // Ejecutar procedimiento de escaneo
                 scanCode();
-                /*Intent intent = new Intent().setClass(LectorBarras.this, Scanner.class);
-                startActivity(intent);
-                finish();*/
+
             }
         } );
 
 
     }
 
+    // Procedimiento de escaneo
     private void scanCode() {
 
         IntentIntegrator integrator = new IntentIntegrator( this );
-        integrator.setCaptureActivity(Scanner.class);
+        // Abrir Activity
+        integrator.setCaptureActivity( Scanner.class );
         integrator.setOrientationLocked( false );
         integrator.setDesiredBarcodeFormats( IntentIntegrator.ALL_CODE_TYPES );
-        integrator.setPrompt("Escaneando código");
+        integrator.setPrompt( "Escaneando código" );
         integrator.initiateScan();
 
     }
 
+    // Procedimiento que recepciona
     @Override
-    protected void onActivityResult( int requestCode, int resultCode, Intent data){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         final IntentResult result = IntentIntegrator.parseActivityResult( requestCode, resultCode, data );
-        if( result != null){
-            if( result != null){
-                if (result.getContents() != null){
+        if (result != null) {
+            if (result != null) {
+                if (result.getContents() != null) {
+                    // Crear un dialogo o modal
                     AlertDialog.Builder builder = new AlertDialog.Builder( this );
+                    // Mostrar mensaje de respuesta de escaneo
                     builder.setMessage( result.getContents() );
                     builder.setTitle( "Resultado del Escaneo" );
                     builder.setPositiveButton( "Continuar", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent().setClass(LectorBarras.this, MostrarInformacion.class);
+
+                            Intent intent = new Intent().setClass( LectorBarras.this, MostrarInformacion.class );
                             intent.putExtra( "dato_capturado", result.getContents() );
-                            startActivity(intent);
-                            //finish();
+                            startActivity( intent );
+
                         }
                     } ).setNegativeButton( "Escanear de nuevo", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+
                             scanCode();
-                            //finish();
                         }
                     } );
 

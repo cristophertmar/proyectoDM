@@ -42,10 +42,10 @@ public class ListadoNube extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_listado_nube );
 
-        lv_datos = findViewById(R.id.lv_datos);
-        tv_menureturn = findViewById(R.id.tv_menureturn);
+        lv_datos = findViewById( R.id.lv_datos );
+        tv_menureturn = findViewById( R.id.tv_menureturn );
 
-        tv_menureturn.setPaintFlags(tv_menureturn.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        tv_menureturn.setPaintFlags( tv_menureturn.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG );
 
         inicializarFirebase();
         listarDatosNube();
@@ -53,8 +53,8 @@ public class ListadoNube extends AppCompatActivity {
         tv_menureturn.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent().setClass(ListadoNube.this, MainActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent().setClass( ListadoNube.this, MainActivity.class );
+                startActivity( intent );
                 finish();
             }
         } );
@@ -62,30 +62,34 @@ public class ListadoNube extends AppCompatActivity {
     }
 
     private void listarDatosNube() {
-        databaseReference.child("Item").addValueEventListener(new ValueEventListener() {
+        databaseReference.child( "Item" ).addValueEventListener( new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listadoItem.clear();
-                for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()){
-                    Item item = objSnaptshot.getValue(Item.class);
-                    listadoItem.add(item);
 
-                    arrayAdapterItem = new ArrayAdapter<Item>(ListadoNube.this, android.R.layout.simple_list_item_1, listadoItem);
-                    lv_datos.setAdapter(arrayAdapterItem);
+                // Obtener lista de items de firebase
+                for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
+                    Item item = objSnaptshot.getValue( Item.class );
+                    listadoItem.add( item );
 
+                    // Mostrar en el listview
+                    arrayAdapterItem = new ArrayAdapter<Item>( ListadoNube.this, android.R.layout.simple_list_item_1, listadoItem );
+                    lv_datos.setAdapter( arrayAdapterItem );
+
+                    // Evento cuando le doy click al otem
                     lv_datos.setOnItemClickListener( new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            final Item it = listadoItem.get(position);
+                            final Item it = listadoItem.get( position );
 
-                            new AlertDialog.Builder(ListadoNube.this)
+                            new AlertDialog.Builder( ListadoNube.this )
                                     .setIcon( android.R.drawable.ic_delete )
-                                    .setTitle( "¿Está seguro?")
+                                    .setTitle( "¿Está seguro?" )
                                     .setMessage( "¿Desea eliminar a " + it.getDescripcion() + " de la lista?" )
                                     .setPositiveButton( "Sí", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
-                                            eliminarDatos(it.getUid());
+                                            eliminarDatos( it.getUid() );
                                         }
                                     } )
                                     .setNegativeButton( "No", null )
@@ -101,18 +105,21 @@ public class ListadoNube extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        } );
     }
 
-    private void eliminarDatos(String uid){
-        databaseReference.child("Item").child(uid).removeValue();
+    private void eliminarDatos(String uid) {
+        // eliminar el registro
+        databaseReference.child( "Item" ).child( uid ).removeValue();
+        // refresco listado
         listarDatosNube();
-        Toast.makeText(getApplicationContext(), "Item eliminado" , Toast.LENGTH_SHORT).show();
+        // Confirmar
+        Toast.makeText( getApplicationContext(), "Item eliminado", Toast.LENGTH_SHORT ).show();
 
     }
 
     private void inicializarFirebase() {
-        FirebaseApp.initializeApp(this);
+        FirebaseApp.initializeApp( this );
         firebaseDatabase = FirebaseDatabase.getInstance();
         //firebaseDatabase.setPersistenceEnabled(true);
         databaseReference = firebaseDatabase.getReference();

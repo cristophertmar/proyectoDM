@@ -9,9 +9,9 @@ public class Utilidades {
     public static final String CAMPO_DESCRIP = "nombre";
     public static final String CAMPO_NUBE = "nube";
 
-    public static final String CREAR_TABLA = "CREATE TABLE " + TABLA + " ("+
-            CAMPO_ID +" integer primary key autoincrement, "+
-            CAMPO_UID +" text, "+
-            CAMPO_DESCRIP +" text, "+
-            CAMPO_NUBE +" integer)";
+    public static final String CREAR_TABLA = "CREATE TABLE " + TABLA + " (" +
+            CAMPO_ID + " integer primary key autoincrement, " +
+            CAMPO_UID + " text, " +
+            CAMPO_DESCRIP + " text, " +
+            CAMPO_NUBE + " integer)";
 }

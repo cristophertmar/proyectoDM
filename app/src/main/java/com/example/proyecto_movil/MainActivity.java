@@ -1,4 +1,4 @@
- package com.example.proyecto_movil;
+package com.example.proyecto_movil;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,28 +10,25 @@ import android.widget.Button;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
- public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
-     Button btn_listadoLocal, btn_codigoBarras, btn_listadoNube;
+    Button btn_listadoLocal, btn_codigoBarras, btn_listadoNube;
 
-     // Firebase
-     FirebaseDatabase firebaseDatabase;
-     DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
 
-        btn_listadoLocal = findViewById(R.id.btn_listadoLocal);
-        btn_codigoBarras = findViewById(R.id.btn_codigoBarras);
-        btn_listadoNube = findViewById(R.id.btn_listadoNube);
+        btn_listadoLocal = findViewById( R.id.btn_listadoLocal );
+        btn_codigoBarras = findViewById( R.id.btn_codigoBarras );
+        btn_listadoNube = findViewById( R.id.btn_listadoNube );
 
         btn_codigoBarras.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent().setClass(MainActivity.this, LectorBarras.class);
-                startActivity(intent);
+                Intent intent = new Intent().setClass( MainActivity.this, LectorBarras.class );
+                startActivity( intent );
             }
         } );
 
@@ -39,20 +36,20 @@ import com.google.firebase.database.FirebaseDatabase;
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent().setClass(MainActivity.this, ListadoLocal.class);
-                startActivity(intent);
+                Intent intent = new Intent().setClass( MainActivity.this, ListadoLocal.class );
+                startActivity( intent );
             }
         } );
 
         btn_listadoNube.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent().setClass(MainActivity.this, ListadoNube.class);
-                startActivity(intent);
+                Intent intent = new Intent().setClass( MainActivity.this, ListadoNube.class );
+                startActivity( intent );
             }
         } );
 
     }
 
 
- }
+}

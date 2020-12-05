@@ -31,45 +31,64 @@ public class MostrarInformacion extends AppCompatActivity {
     DatabaseReference databaseReference;
 
     TextView tv_mostrardato;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_mostrar_informacion );
 
-        tv_mostrardato = findViewById(R.id.tv_mostrardato);
-        btn_guardarLocal = findViewById(R.id.btn_guardarLocal);
-        btn_guardarNube = findViewById(R.id.btn_guardarNube);
+        tv_mostrardato = findViewById( R.id.tv_mostrardato );
+        btn_guardarLocal = findViewById( R.id.btn_guardarLocal );
+        btn_guardarNube = findViewById( R.id.btn_guardarNube );
 
+        // Obtener variable del activity anterior
         datos = getIntent().getExtras();
-        item_guardar = datos.getString("dato_capturado");
+        // Almacenarlo en una variable
+        item_guardar = datos.getString( "dato_capturado" );
 
+        // Inicializar Firebase
         inicializarFirebase();
 
+        // Mostrarlo en un texview
         tv_mostrardato.setText( item_guardar );
 
+        // Evento para guardar localmente
         btn_guardarLocal.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                // Crear objeto de tipo Item
                 Item item = new Item();
-                item.setUid( UUID.randomUUID().toString());
+                // Codigo alfanumérico para firebase
+                item.setUid( UUID.randomUUID().toString() );
+                // Descripción = código extraído del QR
                 item.setDescripcion( item_guardar );
+                // Nube false porque aún no está en firebase
                 item.setNube( 0 );
 
+                // Crear objeto  SQLiteHelper
                 ConexionSQLiteHelper conn = new ConexionSQLiteHelper( getApplicationContext(), "bd_items", null, 1 );
+                // Realizar escritura
                 SQLiteDatabase db = conn.getWritableDatabase();
-                ContentValues values = new ContentValues();
-                values.put( Utilidades.CAMPO_UID, item.getUid());
-                values.put( Utilidades.CAMPO_DESCRIP, item.getDescripcion());
-                values.put( Utilidades.CAMPO_NUBE, item.getNube());
 
+                // Objeto ContentValues
+                ContentValues values = new ContentValues();
+                values.put( Utilidades.CAMPO_UID, item.getUid() );
+                values.put( Utilidades.CAMPO_DESCRIP, item.getDescripcion() );
+                values.put( Utilidades.CAMPO_NUBE, item.getNube() );
+
+                // Realizar insersión
                 db.insert( Utilidades.TABLA, Utilidades.CAMPO_ID, values );
 
-                Toast.makeText(getApplicationContext(), "Guardado localmente ", Toast.LENGTH_SHORT).show();
+                // Mensaje de confirmación
+                Toast.makeText( getApplicationContext(), "Guardado localmente ", Toast.LENGTH_SHORT ).show();
+
+                // Cerar conexión a la base de datos
                 db.close();
 
-                Intent intent = new Intent().setClass(MostrarInformacion.this, ListadoLocal.class);
-                startActivity(intent);
+                // Transición a mi listado de items local
+                Intent intent = new Intent().setClass( MostrarInformacion.this, ListadoLocal.class );
+                startActivity( intent );
                 finish();
 
 
@@ -80,33 +99,34 @@ public class MostrarInformacion extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                // Crear objeto
                 Item item = new Item();
-                item.setUid( UUID.randomUUID().toString());
+                item.setUid( UUID.randomUUID().toString() );
                 item.setDescripcion( item_guardar );
+                // nube true porque irá a firebase
                 item.setNube( 1 );
 
-                databaseReference.child("Item").child(item.getUid()).setValue(item);
+                // Guardar en firebase
+                databaseReference.child( "Item" ).child( item.getUid() ).setValue( item );
 
-                Toast.makeText(getApplicationContext(), "Guardado en la nube", Toast.LENGTH_SHORT).show();
+                // Mensaje de confirmación
+                Toast.makeText( getApplicationContext(), "Guardado en la nube", Toast.LENGTH_SHORT ).show();
 
-                Intent intent = new Intent().setClass(MostrarInformacion.this, ListadoNube.class);
-                startActivity(intent);
+                // Transición a mi listado de items nube
+                Intent intent = new Intent().setClass( MostrarInformacion.this, ListadoNube.class );
+                startActivity( intent );
                 finish();
 
             }
         } );
 
 
-
-
-
     }
 
 
     private void inicializarFirebase() {
-        FirebaseApp.initializeApp(this);
+        FirebaseApp.initializeApp( this );
         firebaseDatabase = FirebaseDatabase.getInstance();
-        //firebaseDatabase.setPersistenceEnabled(true);
         databaseReference = firebaseDatabase.getReference();
     }
 }
